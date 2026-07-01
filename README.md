@@ -8,13 +8,11 @@ Production-oriented **Retrieval-Augmented Generation (RAG)** microservice on **F
 
 ---
 
-## Author & Licensing
+## License
 
-**Copyright (c) 2026 Alexander Borisov.**
+Licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
-You may use, modify, and integrate this code with **attribution to the author**. You may **not sell** the source code as a standalone product or reusable library. **Paid integration** is available from the author.
-
-**Contact:** [a.borisov@qsoft.ru](mailto:a.borisov@qsoft.ru) · See [LICENSE](LICENSE)
+**Author:** Alexander Borisov · [a.borisov.dojo@gmail.com](mailto:a.borisov.dojo@gmail.com)
 
 ---
 
@@ -146,4 +144,4 @@ docs/
 
 ## Integration Services
 
-Paid deployment, customization, and support: [a.borisov@qsoft.ru](mailto:a.borisov@qsoft.ru)
+Paid deployment, customization, and support: [a.borisov.dojo@gmail.com](mailto:a.borisov.dojo@gmail.com)

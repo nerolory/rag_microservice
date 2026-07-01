@@ -8,13 +8,11 @@
 
 ---
 
-## Автор и лицензия
+## Лицензия
 
-**Copyright (c) 2026 Alexander Borisov.**
+Проект распространяется под [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
-Код можно использовать и интегрировать **с указанием автора**. **Продавать код нельзя.** Доступна **платная интеграция**.
-
-**Контакт:** [a.borisov@qsoft.ru](mailto:a.borisov@qsoft.ru) · [LICENSE](../LICENSE)
+**Автор:** Alexander Borisov · [a.borisov.dojo@gmail.com](mailto:a.borisov.dojo@gmail.com)
 
 ---
 
@@ -137,4 +135,4 @@ docs/
 
 ## Интеграция
 
-Платное развёртывание и доработки: [a.borisov@qsoft.ru](mailto:a.borisov@qsoft.ru)
+Платное развёртывание и доработки: [a.borisov.dojo@gmail.com](mailto:a.borisov.dojo@gmail.com)
