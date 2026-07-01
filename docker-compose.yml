@@ -1,0 +1,58 @@
+services:
+  test:
+    build:
+      context: .
+      target: test
+    mem_limit: 768m
+    cpus: 1
+    volumes:
+      - ./app:/app/app
+      - ./tests:/app/tests
+
+  test-e2e:
+    profiles: [e2e]
+    build:
+      context: .
+      target: test-e2e
+    mem_limit: 2g
+    cpus: 2
+    env_file:
+      - .env
+    environment:
+      CHROMA_PERSIST_DIR: /tmp/chroma-test
+      HF_HOME: /tmp/huggingface-test
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      TOKENIZERS_PARALLELISM: "false"
+    volumes:
+      - ./app:/app/app
+      - ./tests:/app/tests
+
+  app:
+    image: rag-service:local
+    build:
+      context: .
+      target: production
+    init: true
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      CHROMA_PERSIST_DIR: /app/data/chroma
+      HF_HOME: /app/data/huggingface
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      TOKENIZERS_PARALLELISM: "false"
+      HF_HUB_DOWNLOAD_TIMEOUT: "300"
+      HF_HUB_ETAG_TIMEOUT: "60"
+    volumes:
+      - chroma_data:/app/data/chroma
+      - huggingface_cache:/app/data/huggingface
+    mem_limit: 2g
+    cpus: 2
+    stop_grace_period: 15s
+
+volumes:
+  chroma_data:
+  huggingface_cache:

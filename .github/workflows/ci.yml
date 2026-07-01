@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-test:
+    name: Lint, typecheck, and tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build test image
+        run: docker compose build test
+
+      - name: Run quality gate
+        run: docker compose run --rm test
+
+  e2e:
+    name: End-to-end tests (optional)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create .env from example
+        run: cp .env.example .env
+
+      - name: Build e2e image
+        run: docker compose --profile e2e build test-e2e
+
+      - name: Run e2e tests
+        env:
+          RUN_E2E_TESTS: "1"
+        run: docker compose --profile e2e run --rm -e RUN_E2E_TESTS=1 test-e2e
